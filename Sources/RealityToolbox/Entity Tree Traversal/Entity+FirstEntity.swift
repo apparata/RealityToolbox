@@ -32,3 +32,27 @@ extension Entity {
     }
 
 }
+
+extension Sequence where Element: Entity {
+
+    /// Return the first entity in the subtree, if any, for which the condition returns `true`.
+    public func firstEntity(where condition: (Entity) -> Bool) -> Entity? {
+        for entity in self {
+            if let child = entity.firstEntity(where: condition) {
+                return child
+            }
+        }
+        return nil
+    }
+
+    /// Find and return the first entity of the specified type in the subtree, if any.
+    public func firstEntity<T>( _ type: T.Type) -> T? {
+        for entity in self {
+            if let child = entity.firstEntity(type) {
+                return child
+            }
+        }
+        return nil
+    }
+
+}
