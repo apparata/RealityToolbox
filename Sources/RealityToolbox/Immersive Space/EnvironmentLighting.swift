@@ -22,7 +22,6 @@ import RealityKit
             intensityExponent: intensityExponent
         )
 
-
         let receiverComponent = ImageBasedLightReceiverComponent(
             imageBasedLight: entity
         )
