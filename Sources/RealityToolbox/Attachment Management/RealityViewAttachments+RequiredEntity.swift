@@ -19,7 +19,7 @@ extension RealityViewAttachments {
     ///   initializer ``RealityView/init(make:update:attachments:)``.
     /// - Returns: The resolved attachment entity, or fatalErrors if ``RealityView``
     ///   can't find an attachment view with the given `id`.
-    public func requiredEntity(for id: some Hashable) -> ViewAttachmentEntity? {
+    public func requiredEntity(for id: some Hashable) -> ViewAttachmentEntity {
         guard let attachmentEntity = entity(for: id) else {
             fatalError("Required ViewAttachmentEntity \(id) cannot be found.")
         }
