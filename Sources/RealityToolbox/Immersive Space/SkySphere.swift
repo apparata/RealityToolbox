@@ -1,3 +1,5 @@
+#if os(visionOS)
+
 import Foundation
 import RealityKit
 
@@ -70,3 +72,5 @@ public enum SkySphereError: Swift.Error {
         return material
     }
 }
+
+#endif

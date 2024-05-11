@@ -1,3 +1,5 @@
+#if os(visionOS)
+
 import Foundation
 import RealityKit
 
@@ -30,3 +32,5 @@ import RealityKit
         entity.components.set(receiverComponent)
     }
 }
+
+#endif
