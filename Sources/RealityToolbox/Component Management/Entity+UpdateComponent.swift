@@ -10,19 +10,11 @@ extension Entity {
     /// - Parameter type: A component type to look for.
     /// - Parameter update: Closure that apply arbitrary modifications to the component.
     public func updateComponentIfPresent<T: Component>(_ type: T.Type, update: (inout T) -> Void) {
-        #if os(visionOS)
         guard var component = components[type] else {
             return
         }
         update(&component)
         components[T.self] = component
-        #else
-        guard var component = components[type] as? T else {
-            return
-        }
-        update(&component)
-        components[T.self] = component
-        #endif
     }
 
     // MARK: Update / Create Component
@@ -33,15 +25,9 @@ extension Entity {
     /// - Parameter update: Closure that apply arbitrary modifications to the component.
     /// - Parameter createIfNotPresent: Closure that creates a component if it does not already exist.
     public func updateComponent<T: Component>(_ type: T.Type, update: (inout T) -> Void, createFirstIfNotPresent: () -> T) {
-        #if os(visionOS)
         var component = components[type] ?? createFirstIfNotPresent()
         update(&component)
         components[T.self] = component
-        #else
-        var component = components[type] as? T ?? createFirstIfNotPresent()
-        update(&component)
-        components[T.self] = component
-        #endif
     }
 
     // MARK: Update Req. Component
