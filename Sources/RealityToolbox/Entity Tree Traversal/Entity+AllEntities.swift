@@ -17,6 +17,13 @@ extension Entity {
         }
     }
 
+    /// Perform action recursively for all entities in the subtree.
+    public func performForAllEntities(_ action: (Entity) -> Void) {
+        action(self)
+        children.forEach {
+            $0.performForAllEntities(action)
+        }
+    }
 }
 
 extension Sequence where Element: Entity {
