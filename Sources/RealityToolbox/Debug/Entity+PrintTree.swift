@@ -13,6 +13,8 @@ extension Entity {
 
 #if !os(visionOS)
 extension Scene {
+
+    /// Dump debug information about the scene and its children to the console.
     public func printTree() {
         printEntityTree(self)
     }

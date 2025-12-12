@@ -13,6 +13,8 @@ public extension Entity {
 
 #if !os(visionOS)
 public extension Scene {
+
+    /// Dump debug information about the scene and its children to a string.
     func treeToString() -> String {
         entityTreeToString(self)
     }
